@@ -47,6 +47,7 @@ class App extends React.Component {
   filterData = (tag) => {
     let dataTest = data.messages;
     let filterData = dataTest.filter(dataTest => dataTest.tags.includes(tag));
+    console.log(filterData);
     // this.setState({ mails: filterData });
   }
 
