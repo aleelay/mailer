@@ -8,7 +8,7 @@ const MailBoxList = ({mailsCount, tags, onTagSelect}) => {
   return(
     <div className="mailBoxList ui vertical menu">
       MailBox
-      <div className="active item">
+      <div className="active item"  onClick={() => onTagSelect("")}>
         Inbox
         <div className="ui left pointing label">
           {mailsCount}

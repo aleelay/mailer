@@ -8,24 +8,18 @@ import '../styles/styles.css';
 class App extends React.Component {
   state = {
     tags: [], 
-    mails: [], 
+    mails: data.messages, 
     selectedMail: null, 
     selectedTag: null,
     countMails: 0
   }
 
   async componentDidMount(){
-    this.setState({
-      tags: this.getTags(), 
-      mails: data.messages, 
+    await this.setState({
+      tags: this.getTags() 
     });
   }
 
-  componentDidUpdate(prevProps){
-    if(this.props.mails !== this.prevProps.mails){
-      this.fetchData(this.props.mails);
-    }
-  }
   getTags = () => {
     let tags = [];
     data.messages.forEach((elem, index) => {
@@ -42,21 +36,24 @@ class App extends React.Component {
   onTagSelect = (tag) => {
     this.setState({ selectedTag: tag })
     console.log(tag)
+    this.filterData(tag);
   }
 
   filterData = (tag) => {
-    let dataTest = data.messages;
-    let filterData = dataTest.filter(dataTest => dataTest.tags.includes(tag));
-    console.log(filterData);
-    // this.setState({ mails: filterData });
+    console.log("in filterdata");
+    console.log("tag: ", tag);
+
+    if(tag){
+      
+      let dataTest = data.messages;
+      let filterData = dataTest.filter(dataTest => dataTest.tags.includes(tag));
+      this.setState({ mails: filterData })
+    } else{
+      this.setState({ mails: data.messages })
+    }
   }
 
   render() {
-    if(!this.state.selectedTag){
-      console.log("no tag")
-    }else{
-      this.filterData(this.state.selectedTag)
-    }
     return(
       <div className="ui container">
         <div className="ui grid">
