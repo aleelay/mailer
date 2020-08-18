@@ -14,9 +14,6 @@ body{
   cursor: pointer;
   text-align: left;
 }
-.mailItem .ui.label{
-  padding: ;
-}
 .mailBoxList .item {
   text-transform: capitalize;
 }
