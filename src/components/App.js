@@ -3,6 +3,7 @@ import data from '../data/emails.json';
 import MailList from './MailList';
 import Email from './Email';
 import MailBoxList from './MailBoxList';
+import faker from 'faker';
 import '../styles/styles.css';
 
 class App extends React.Component {
@@ -56,18 +57,39 @@ class App extends React.Component {
   render() {
     return(
       <div className="ui container">
-        <h1>Mailer</h1>
+        
+
         <div className="ui grid">
-          <div className="four wide column">
-            <MailBoxList mailsCount={this.state.mails.length} tags={this.state.tags} onTagSelect={this.onTagSelect}/>
+          <div className="row ui attached segment header">
+            <div className="four wide column appName">
+              <h1>Mailer</h1>
+            </div>
+            <div className="ten wide column appHeader">
+              <div className="ui icon input">
+                <i className="search icon"></i>
+                <input type="text" placeholder="Search..." />
+              </div>
+            </div>
+            <div className="two wide column appProfile">
+              <img alt="avatar" className="ui avatar image" src={faker.image.avatar()} />
+            </div>
+            
           </div>
-          <div className="twelve wide column">
-            <MailList 
-              mails={this.state.mails} 
-              onMailSelect={this.onMailSelect}
-              onTagSelect={this.onTagSelect}
-            />
-            <Email mail={this.state.selectedMail}/>
+          <div className="row ui attached segment">
+
+          </div>
+          <div className="row">
+            <div className="four wide column">
+              <MailBoxList mailsCount={this.state.mails.length} tags={this.state.tags} onTagSelect={this.onTagSelect}/>
+            </div>
+            <div className="twelve wide column">
+              <MailList 
+                mails={this.state.mails} 
+                onMailSelect={this.onMailSelect}
+                onTagSelect={this.onTagSelect}
+              />
+              <Email mail={this.state.selectedMail}/>
+            </div>
           </div>
         </div>        
       </div>

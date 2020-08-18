@@ -1,10 +1,17 @@
 body{
   font-family: 'Roboto', sans-serif;
 }
-
-.mailList{
-  
+.header .column{
+  padding-top: 14px;
 }
+.appName{
+  color: #5f6368;
+  padding-left: 30px;
+}
+.appProfile{
+  text-align: right;
+}
+
 .mailItem{
   padding-bottom: 10px;
   padding-top: 10px;
