@@ -56,6 +56,7 @@ class App extends React.Component {
   render() {
     return(
       <div className="ui container">
+        <h1>Mailer</h1>
         <div className="ui grid">
           <div className="four wide column">
             <MailBoxList mailsCount={this.state.mails.length} tags={this.state.tags} onTagSelect={this.onTagSelect}/>
@@ -64,6 +65,7 @@ class App extends React.Component {
             <MailList 
               mails={this.state.mails} 
               onMailSelect={this.onMailSelect}
+              onTagSelect={this.onTagSelect}
             />
             <Email mail={this.state.selectedMail}/>
           </div>
