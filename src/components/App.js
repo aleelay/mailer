@@ -36,16 +36,12 @@ class App extends React.Component {
 
   onTagSelect = (tag) => {
     this.setState({ selectedTag: tag })
-    console.log(tag)
     this.filterData(tag);
+    this.onMailSelect(null);
   }
 
   filterData = (tag) => {
-    console.log("in filterdata");
-    console.log("tag: ", tag);
-
     if(tag){
-      
       let dataTest = data.messages;
       let filterData = dataTest.filter(dataTest => dataTest.tags.includes(tag));
       this.setState({ mails: filterData })
@@ -57,9 +53,7 @@ class App extends React.Component {
   render() {
     return(
       <div className="ui container">
-        
-
-        <div className="ui grid">
+        <div className="ui grid stackable">
           <div className="row ui attached segment header">
             <div className="four wide column appName">
               <h1>Mailer</h1>
@@ -71,6 +65,9 @@ class App extends React.Component {
               </div>
             </div>
             <div className="two wide column appProfile">
+              <i className="question circle outline icon"></i>
+              <i className="cog icon"></i>
+              <i className="th icon"></i>
               <img alt="avatar" className="ui avatar image" src={faker.image.avatar()} />
             </div>
             
@@ -78,19 +75,35 @@ class App extends React.Component {
           <div className="row ui attached segment">
 
           </div>
-          <div className="row">
-            <div className="four wide column">
-              <MailBoxList mailsCount={this.state.mails.length} tags={this.state.tags} onTagSelect={this.onTagSelect}/>
-            </div>
-            <div className="twelve wide column">
-              <MailList 
-                mails={this.state.mails} 
-                onMailSelect={this.onMailSelect}
-                onTagSelect={this.onTagSelect}
-              />
-              <Email mail={this.state.selectedMail}/>
+          <div className="row ui attached segment">
+            <div className="ui stackable two column grid stackable container">
+                <div className="four wide column">
+                  <MailBoxList 
+                    mailsCount={this.state.mails.length} 
+                    tags={this.state.tags} 
+                    onTagSelect={this.onTagSelect}
+                  />
+                </div>
+                
+                <div className="twelve wide column">
+                  {
+                  this.state.selectedMail ? (
+                    <Email 
+                      mail={this.state.selectedMail}
+                      onMailSelect={this.onMailSelect}
+                    />
+                  ) : (
+                    <MailList 
+                      mails={this.state.mails} 
+                      onMailSelect={this.onMailSelect}
+                      onTagSelect={this.onTagSelect}
+                    />
+                  )}
+                </div>
+
             </div>
           </div>
+         
         </div>        
       </div>
     );

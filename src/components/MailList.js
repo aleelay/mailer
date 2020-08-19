@@ -7,7 +7,7 @@ const MailList = ({mails, onMailSelect, onTagSelect}) => {
   });
 
   return(
-    <div className="ui grid mailList">
+    <div className="ui grid stackable mailList">
       {renderedList}
     </div>
   );

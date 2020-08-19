@@ -1,8 +1,11 @@
 body{
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto', sans-serif !important;
 }
 .header .column{
   padding-top: 14px;
+}
+.appHeader input{
+  max-width: 320px;
 }
 .appName{
   color: #5f6368;
@@ -21,6 +24,16 @@ body{
   cursor: pointer;
   text-align: left;
 }
+.mailBoxListItem{
+  text-transform: capitalize;
+}
+.mailList{
+  border: 1px solid #d4d4d5;
+}
 .mailBoxList .item {
   text-transform: capitalize;
+}
+.mailSubject{
+  font-weight: bold;
+  cursor: pointer;
 }

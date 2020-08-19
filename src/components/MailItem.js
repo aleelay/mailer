@@ -12,7 +12,7 @@ const MailItem = ({mail, onMailSelect, onTagSelect}) => {
       <div className="four wide column">{mail.sender}</div>
       <div className="nine wide column">
         <div className="row">
-          <div className="wide column">{mail.subject}</div>
+          <div className="wide column mailSubject">{mail.subject}</div>
         </div>
         <div className="row">
           <div className="wide column">{renderedTags}</div>
